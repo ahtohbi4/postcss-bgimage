@@ -1,0 +1,14 @@
+body {
+    font: 100 12px/18px Arial;
+}
+html { border: 1px dashed #f02; }
+
+.some-selector {
+    background: linear-gradient(red, #0ff);
+    border-image: url('/img/picture.png');
+}
+    .some_another-selector {background-image:transparent}
+.yet_another-selector {
+    background: #f35421;
+    background-image:url(img/picture.png);
+}
