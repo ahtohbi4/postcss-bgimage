@@ -59,7 +59,7 @@ gulp.task('compile', function() {
 });
 ```
 
-**Result**
+##Result
 
 input:
 ```css
