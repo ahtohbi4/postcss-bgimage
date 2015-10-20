@@ -10,7 +10,7 @@ npm install postcss-bgimage --save-dev
 ```
 
 ##Usage
-###PostCss
+**PostCss**
 
 ```javascript
 var postcss = require('postcss');
@@ -30,7 +30,7 @@ postcss()
     .css;
 ```
 
-###Gulp:
+**Gulp**
 
 ```javascript
 var gulp = require('gulp');
@@ -59,7 +59,7 @@ gulp.task('compile', function() {
 });
 ```
 
-##Result
+**Result**
 
 input:
 ```css
