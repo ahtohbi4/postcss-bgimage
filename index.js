@@ -42,8 +42,7 @@ function getProcessor(mode) {
 function cutter(css) {
     return css.walkDecls(BG_IMAGE_PATTERN, function (decl) {
         if (URL_PATTERN.test(decl.value)) {
-            decl.parent.remove();
-            return true;
+            decl.remove();
         }
     });
 }
