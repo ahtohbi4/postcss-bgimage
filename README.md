@@ -3,13 +3,13 @@
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
 
-##Installation
+## Installation
 
 ```bash
 npm install postcss-bgimage --save-dev
 ```
 
-##Usage
+## Usage
 **PostCss**
 
 ```javascript
@@ -59,7 +59,7 @@ gulp.task('compile', function() {
 });
 ```
 
-##Result
+## Result
 
 input:
 ```css
