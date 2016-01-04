@@ -1,16 +1,20 @@
-# postcss-bgimage
+postcss-bgimage
+==============
 
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
 
-## Installation
+Installation
+-----------------
 
 ```bash
 npm install postcss-bgimage --save-dev
 ```
 
-## Usage
-**PostCss**
+Usage
+-----------------
+
+#### [Grunt PostCSS](https://github.com/nDmitry/grunt-postcss)
 
 ```javascript
 var postcss = require('postcss');
@@ -30,7 +34,7 @@ postcss()
     .css;
 ```
 
-**Gulp**
+#### [Gulp PostCSS](https://github.com/w0rm/gulp-postcss)
 
 ```javascript
 var gulp = require('gulp');
@@ -59,29 +63,33 @@ gulp.task('compile', function() {
 });
 ```
 
-## Result
+Result
+-----------------
 
-input:
+**input**
+
+style.css:
 ```css
-/* css/style.css */
 body {
-    background-image: url(/img/picture.css);
+    background-image: url(/path/to/img.png);
     font-family: Arial;
     padding: 20px 10px;
 }
 ```
 
-output:
+**output**
+
+style.top.css:
 ```css
-/* compiled/css/top.css */
 body {
     font-family: Arial;
     padding: 20px 10px;
 }
-
-/* compiled/css/bottom.css */
+```
+style.bottom.css:
+```css
 body {
-    background-image: url(/img/picture.css);
+    background-image: url(/path/to/img.png);
 }
 ```
 
@@ -90,12 +98,63 @@ body {
 <html>
 <head>
     <title>postcss-bgimage test</title>
-    <link rel="stylesheet" href="/compiled/css/top.css">
+    <link rel="stylesheet" href="/compiled/css/style.top.css">
 </head>
 <body>
     <h1>postcss-bgimage test</h1>
     <p>Page content</p>
-    <link rel="stylesheet" href="/compiled/css/bottom.css">
+    <link rel="stylesheet" href="/compiled/css/style.bottom.css">
 </body>
 </html>
 ```
+
+#### Ignore rules
+
+To ignore some CSS rule use `/* bgImage: ignore */`. For example:
+
+**input**
+
+style.css:
+```css
+.some-rule {
+    position: relative;
+    background-image: url(/path/to/img1.png);
+    font-family: Arial;
+    padding: 20px 10px;
+}
+.ignore-rule {
+    display: inline-block;
+    /* bgImage: ignore */
+    background: url(/path/to/img2.png);
+}
+```
+
+**output**
+
+style.top.css:
+```css
+.some-rule {
+    position: relative;
+    font-family: Arial;
+    padding: 20px 10px;
+}
+.ignore-rule {
+    display: inline-block;
+    background: url(/path/to/img2.png);
+}
+```
+style.bottom.css:
+```css
+.some-rule {
+    background-image: url(/path/to/img1.png);
+}
+```
+
+Options
+--------------------
+
+### Mode
+
+One of two values:
+ * `cutter`
+ * `cutterInvertor`
