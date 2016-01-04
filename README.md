@@ -1,7 +1,7 @@
 # postcss-bgimage
 
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
-or leaves only its.
+or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
 
 ##Installation
 
@@ -10,7 +10,7 @@ npm install postcss-bgimage --save-dev
 ```
 
 ##Usage
-###PostCss
+**PostCss**
 
 ```javascript
 var postcss = require('postcss');
@@ -30,7 +30,7 @@ postcss()
     .css;
 ```
 
-###Gulp:
+**Gulp**
 
 ```javascript
 var gulp = require('gulp');
