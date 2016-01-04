@@ -14,7 +14,7 @@ npm install postcss-bgimage --save-dev
 Usage
 -----------------
 
-#### [Grunt PostCSS](https://github.com/nDmitry/grunt-postcss)
+#### [PostCSS](https://github.com/postcss/postcss#js-api)
 
 ```javascript
 var postcss = require('postcss');
@@ -26,10 +26,7 @@ var processors = [
     });
 ];
 
-postcss()
-    .use(bgImage({
-        mode: 'cutter'
-    }))
+postcss(processors)
     .process(src)
     .css;
 ```
@@ -63,9 +60,9 @@ gulp.task('compile', function() {
 Result
 -----------------
 
-**Input**
+**Input:**
 
-style.css:
+*style.css*
 ```css
 body {
     background-image: url(/path/to/img.png);
@@ -74,24 +71,24 @@ body {
 }
 ```
 
-**Output**
+**Output:**
 
-style.top.css:
+*style.top.css*
 ```css
 body {
     font-family: Arial;
     padding: 20px 10px;
 }
 ```
-style.bottom.css:
+*style.bottom.css*
 ```css
 body {
     background-image: url(/path/to/img.png);
 }
 ```
-**Using of resulting files**
+**Using of resulting files:**
 
-index.html:
+*index.html*
 ```html
 <!DOCTYPE html>
 <html>
@@ -111,9 +108,9 @@ index.html:
 
 To ignore some CSS rule use `/* bgImage: ignore */`. For example:
 
-**Input**
+**Input:**
 
-style.css:
+*style.css*
 ```css
 .some-rule {
     position: relative;
@@ -128,9 +125,9 @@ style.css:
 }
 ```
 
-**Output**
+**Output:**
 
-style.top.css:
+*style.top.css*
 ```css
 .some-rule {
     position: relative;
@@ -142,7 +139,7 @@ style.top.css:
     background: url(/path/to/img2.png);
 }
 ```
-style.bottom.css:
+*style.bottom.css*
 ```css
 .some-rule {
     background-image: url(/path/to/img1.png);
