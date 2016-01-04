@@ -1,0 +1,14 @@
+.yet_another-selector {
+    background-image:url(img/picture.png);
+}
+
+.class-with-background {
+    background: url(/img/some_picture.png);
+}
+
+.stylus-syntax {
+
+    .stylus-syntax-an-other-children {
+        background: url(path/to/pic.bmp);
+    }
+}

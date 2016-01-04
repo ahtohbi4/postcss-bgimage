@@ -1,6 +1,7 @@
 var postcss = require('postcss'),
-    BG_IMAGE_PATTERN = new RegExp(/background(-image)?/i),
-    URL_PATTERN = new RegExp(/url\([^)]+\)/i);
+    PATTERN_IGNORE = /[\s]*bgImage[\s]*:[\s]*ignore[\s]*/i,
+    PATTERN_BG_IMAGE = /background(-image)?/i,
+    PATTERN_URL = /url\([^)]+\)/i;
 
 /**
  * Remove or keep only images by url() to optimize page loading
@@ -21,7 +22,7 @@ module.exports = postcss.plugin('postcss-bgimage', function (options) {
 
 /**
  * @param {String} mode
- * @returns {void}
+ * @return {void}
  */
 function getProcessor(mode) {
     switch (mode) {
@@ -38,26 +39,33 @@ function getProcessor(mode) {
 
 /**
  * @param {String} css
- * @returns {Boolean}
+ * @return {Boolean}
  */
 function cutter(css) {
-    return css.walkDecls(BG_IMAGE_PATTERN, function (decl) {
-        if (URL_PATTERN.test(decl.value)) {
-            decl.remove();
+    return css.walkRules(function (rule) {
+        var ignored = ignoreChecking(rule);
+
+        if (!ignored) {
+            rule.walkDecls(PATTERN_BG_IMAGE, function (decl) {
+                if (PATTERN_URL.test(decl.value)) {
+                    decl.remove();
+                }
+            });
         }
     });
 }
 
 /**
  * @param {String} css
- * @returns {Boolean}
+ * @return {Boolean}
  */
 function cutterInvertor(css) {
     return css.walkRules(function (rule) {
-        var hasBgImage = false;
+        var ignored = ignoreChecking(rule),
+            hasBgImage = false;
 
         rule.walkDecls(function (decl) {
-            if (BG_IMAGE_PATTERN.test(decl.prop) && URL_PATTERN.test(decl.value)) {
+            if (!ignored && PATTERN_BG_IMAGE.test(decl.prop) && PATTERN_URL.test(decl.value)) {
                 // Declaration has an URL for background property
                 hasBgImage = true;
 
@@ -70,4 +78,21 @@ function cutterInvertor(css) {
             rule.remove();
         }
     });
+}
+
+/**
+ * @method ignoreChecking
+ * @param {Object} rule
+ * @return {Boolean}
+ */
+function ignoreChecking(rule) {
+    var result = false;
+
+    rule.walkComments(function (comment) {
+        if (PATTERN_IGNORE.test(comment.text)) {
+            result = true;
+        }
+    });
+
+    return result;
 }
