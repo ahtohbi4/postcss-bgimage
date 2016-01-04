@@ -9,7 +9,8 @@ var postcss = require('postcss'),
  *
  * @param {Object} options plugin options
  * @return {void}
- */module.exports = postcss.plugin('postcss-bgimage', function (options) {
+ */
+module.exports = postcss.plugin('postcss-bgimage', function (options) {
     var options = options || {},
         mode = options.mode;
 

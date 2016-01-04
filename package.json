@@ -16,7 +16,7 @@
     "background",
     "background-image"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ahtohbi4/postcss-bgimage/issues"
   },
