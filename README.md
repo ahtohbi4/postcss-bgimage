@@ -39,34 +39,31 @@ postcss()
 ```javascript
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
-var concat = require('concat');
 var bgImage = require('postcss-bgimage');
 
 gulp.task('compile', function() {
-    gulp.src('css/**.css')
-        .pipe(concat('top.css'))
+    gulp.src('css/style.css')
         .pipe(postcss([
             bgImage({
                 mode: 'cutter'
             })
         ]))
-        .pipe(gulp.dest('compiled/css/'));
+        .pipe(gulp.dest('compiled/css/style.top.css'));
 
-    gulp.src('css/**.css')
-        .pipe(concat('bottom.css'))
+    gulp.src('css/style.css')
         .pipe(postcss([
             bgImage({
                 mode: 'cutterInvertor'
             })
         ]))
-        .pipe(gulp.dest('compiled/css/'));
+        .pipe(gulp.dest('compiled/css/style.bottom.css'));
 });
 ```
 
 Result
 -----------------
 
-**input**
+**Input**
 
 style.css:
 ```css
@@ -77,7 +74,7 @@ body {
 }
 ```
 
-**output**
+**Output**
 
 style.top.css:
 ```css
@@ -92,7 +89,9 @@ body {
     background-image: url(/path/to/img.png);
 }
 ```
+**Using of resulting files**
 
+index.html:
 ```html
 <!DOCTYPE html>
 <html>
@@ -112,7 +111,7 @@ body {
 
 To ignore some CSS rule use `/* bgImage: ignore */`. For example:
 
-**input**
+**Input**
 
 style.css:
 ```css
@@ -129,7 +128,7 @@ style.css:
 }
 ```
 
-**output**
+**Output**
 
 style.top.css:
 ```css
