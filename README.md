@@ -106,7 +106,7 @@ body {
 
 #### Ignore rules
 
-To ignore some CSS rule use `/* bgImage: ignore */`. For example:
+To ignore some CSS rules use `/* bgImage: ignore */`. For example:
 
 **Input:**
 
