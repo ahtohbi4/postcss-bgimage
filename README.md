@@ -1,4 +1,4 @@
-postcss-bgimage
+postcss-bgimage [![Build Status](https://travis-ci.org/ahtohbi4/postcss-bgimage.svg?branch=master)](https://travis-ci.org/ahtohbi4/postcss-bgimage)
 ==============
 
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
