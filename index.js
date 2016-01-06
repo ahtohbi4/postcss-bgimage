@@ -11,8 +11,8 @@ var postcss = require('postcss'),
  * @param {Object} options plugin options
  * @return {void}
  */
-module.exports = postcss.plugin('postcss-bgimage', function (options) {
-    var options = options || {},
+module.exports = postcss.plugin('postcss-bgimage', function (opt) {
+    var options = opt || {},
         mode = options.mode;
 
     return function (css) {
@@ -21,20 +21,20 @@ module.exports = postcss.plugin('postcss-bgimage', function (options) {
 });
 
 /**
- * @param {String} mode
- * @return {void}
+ * @method ignoreChecking
+ * @param {Object} rule
+ * @return {Boolean}
  */
-function getProcessor(mode) {
-    switch (mode) {
-        case 'cutter':
-            return cutter;
+function ignoreChecking(rule) {
+    var result = false;
 
-        case 'cutterInvertor':
-            return cutterInvertor;
+    rule.walkComments(function (comment) {
+        if (PATTERN_IGNORE.test(comment.text)) {
+            result = true;
+        }
+    });
 
-        default:
-            throw new Error('Unknow mode for postcss-bgimage: ' + mode);
-    }
+    return result;
 }
 
 /**
@@ -81,18 +81,18 @@ function cutterInvertor(css) {
 }
 
 /**
- * @method ignoreChecking
- * @param {Object} rule
- * @return {Boolean}
+ * @param {String} mode
+ * @return {void}
  */
-function ignoreChecking(rule) {
-    var result = false;
+function getProcessor(mode) {
+    switch (mode) {
+        case 'cutter':
+            return cutter;
 
-    rule.walkComments(function (comment) {
-        if (PATTERN_IGNORE.test(comment.text)) {
-            result = true;
-        }
-    });
+        case 'cutterInvertor':
+            return cutterInvertor;
 
-    return result;
+        default:
+            throw new Error('Unknow mode for postcss-bgimage: ' + mode);
+    }
 }
