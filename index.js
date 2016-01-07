@@ -4,23 +4,6 @@ var postcss = require('postcss'),
     PATTERN_URL = /url\([^)]+\)/i;
 
 /**
- * Remove or keep only images by url() to optimize page loading
- *
- * @see https://github.com/postcss/postcss/blob/master/docs/api.md
- *
- * @param {Object} options plugin options
- * @return {void}
- */
-module.exports = postcss.plugin('postcss-bgimage', function (opt) {
-    var options = opt || {},
-        mode = options.mode;
-
-    return function (css) {
-        getProcessor(mode)(css);
-    };
-});
-
-/**
  * @method ignoreChecking
  * @param {Object} rule
  * @return {Boolean}
@@ -96,3 +79,20 @@ function getProcessor(mode) {
             throw new Error('Unknow mode for postcss-bgimage: ' + mode);
     }
 }
+
+/**
+ * Remove or keep only images by url() to optimize page loading
+ *
+ * @see https://github.com/postcss/postcss/blob/master/docs/api.md
+ *
+ * @param {Object} options plugin options
+ * @return {void}
+ */
+module.exports = postcss.plugin('postcss-bgimage', function (opt) {
+    var options = opt || {},
+        mode = options.mode;
+
+    return function (css) {
+        getProcessor(mode)(css);
+    };
+});
