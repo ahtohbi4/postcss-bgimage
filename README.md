@@ -23,7 +23,7 @@ var bgImage = require('postcss-bgimage');
 var processors = [
     bgImage({
         mode: 'cutter'
-    });
+    })
 ];
 
 postcss(processors)

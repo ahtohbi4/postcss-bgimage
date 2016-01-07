@@ -17,7 +17,7 @@ module.exports = postcss.plugin('postcss-bgimage', function (opt) {
 
     return function (css) {
         getProcessor(mode)(css);
-    }
+    };
 });
 
 /**
