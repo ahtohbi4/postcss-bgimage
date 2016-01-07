@@ -6,9 +6,6 @@
     background: url(/img/some_picture.png);
 }
 
-.stylus-syntax {
-
-    .stylus-syntax-an-other-children {
+    .complex-selector + .with-neighbor:last-of-type > .and_child::before {
         background: url(path/to/pic.bmp);
     }
-}

@@ -7,7 +7,7 @@ html { border: 1px dashed #f02; }
     background: linear-gradient(red, #0ff);
     border-image: url('/img/picture.png');
 }
-    .some_another-selector {background-image:transparent}
+    .some_another-selector {background-image:linear-gradient(red, #3f0)}
 .yet_another-selector {
     background: #f35421;
     background-image:url(img/picture.png);
@@ -23,19 +23,17 @@ html { border: 1px dashed #f02; }
     top: 50px;
 }
 
-.stylus-syntax {
-    .stylus-syntax-children {
+    .complex-selector + .with-neighbor:last-of-type > .and_child {
         color: red;
         display: flex
     }
 
-    .stylus-syntax-an-other-children {
+    .complex-selector + .with-neighbor:last-of-type > .and_child::before {
         border: 1px dashed rgba(0,54,46,0.8);
         background: #f00 right 50% top 30em no-repeat;
         background: url(path/to/pic.bmp);
         float: left;
     }
-}
 
 .class-to-ignore {
     position: absolute;
