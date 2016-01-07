@@ -1,3 +1,8 @@
+/**
+ * Remove or keep only images by url() to optimize page loading
+ *
+ * @see https://github.com/postcss/postcss/blob/master/docs/api.md
+ */
 var postcss = require('postcss'),
     PATTERN_IGNORE = /[\s]*bgImage[\s]*:[\s]*ignore[\s]*/i,
     PATTERN_BG_IMAGE = /background(-image)?/i,
@@ -81,10 +86,6 @@ function getProcessor(mode) {
 }
 
 /**
- * Remove or keep only images by url() to optimize page loading
- *
- * @see https://github.com/postcss/postcss/blob/master/docs/api.md
- *
  * @param {Object} options plugin options
  * @return {void}
  */
