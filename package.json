@@ -14,7 +14,9 @@
   "keywords": [
     "postcss",
     "background",
-    "background-image"
+    "background-image",
+    "css",
+    "optimization"
   ],
   "license": "MIT",
   "bugs": {
