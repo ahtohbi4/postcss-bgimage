@@ -1,4 +1,4 @@
-postcss-bgimage [![npm version](https://badge.fury.io/js/postcss-bgimage.svg)](https://badge.fury.io/js/postcss-bgimage) [![Build Status](https://travis-ci.org/ahtohbi4/postcss-bgimage.svg?branch=master)](https://travis-ci.org/ahtohbi4/postcss-bgimage) [![Codacy Badge](https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513)](https://www.codacy.com/app/alexandr-post/postcss-bgimage)
+postcss-bgimage [![npm version](https://badge.fury.io/js/postcss-bgimage.svg)](https://badge.fury.io/js/postcss-bgimage) [![Dependency Status](https://david-dm.org/ahtohbi4/postcss-bgimage.svg)](https://david-dm.org/ahtohbi4/postcss-bgimage) [![Build Status](https://travis-ci.org/ahtohbi4/postcss-bgimage.svg?branch=master)](https://travis-ci.org/ahtohbi4/postcss-bgimage) [![Codacy Badge](https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513)](https://www.codacy.com/app/alexandr-post/postcss-bgimage)
 ==============
 
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
