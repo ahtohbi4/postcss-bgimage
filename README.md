@@ -1,5 +1,16 @@
-postcss-bgimage [![npm version](https://badge.fury.io/js/postcss-bgimage.svg)](https://badge.fury.io/js/postcss-bgimage) [![Dependency Status](https://david-dm.org/ahtohbi4/postcss-bgimage.svg)](https://david-dm.org/ahtohbi4/postcss-bgimage) [![Build Status](https://travis-ci.org/ahtohbi4/postcss-bgimage.svg?branch=master)](https://travis-ci.org/ahtohbi4/postcss-bgimage) [![Codacy Badge](https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513)](https://www.codacy.com/app/alexandr-post/postcss-bgimage)
+postcss-bgimage [![npm version][version-img]][version] [![Dependency Status][dependency-img]][dependency] [![Travis Build Status][travis-img]][travis] [![Appveyor Build Status][appveyor-img]][appveyor] [![Codacy Badge][codacy-img]][codacy]
 ==============
+
+[dependency-img]: https://david-dm.org/ahtohbi4/postcss-bgimage.svg
+[dependency]: https://david-dm.org/ahtohbi4/postcss-bgimage
+[version-img]: https://badge.fury.io/js/postcss-bgimage.svg
+[version]: https://badge.fury.io/js/postcss-bgimage
+[travis-img]: https://travis-ci.org/ahtohbi4/postcss-bgimage.svg?branch=master
+[travis]: https://travis-ci.org/ahtohbi4/postcss-bgimage
+[appveyor-img]: https://ci.appveyor.com/api/projects/status/0xodj7np6jghyuik/branch/master?svg=true
+[appveyor]: https://ci.appveyor.com/project/ahtohbi4/postcss-bgimage/branch/master
+[codacy-img]: https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513
+[codacy]: https://www.codacy.com/app/alexandr-post/postcss-bgimage
 
 [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
