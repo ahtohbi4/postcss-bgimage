@@ -1,5 +1,7 @@
-postcss-bgimage [![npm version][version-img]][version] [![Dependency Status][dependency-img]][dependency] [![Travis Build Status][travis-img]][travis] [![Appveyor Build Status][appveyor-img]][appveyor] [![Codacy Badge][codacy-img]][codacy]
+postcss-bgimage
 ==============
+
+[![npm version][version-img]][version] [![Dependency Status][dependency-img]][dependency] [![Travis Build Status][travis-img]][travis] [![Appveyor Build Status][appveyor-img]][appveyor] [![Codacy Badge][codacy-img]][codacy]
 
 [dependency-img]: https://david-dm.org/ahtohbi4/postcss-bgimage.svg
 [dependency]: https://david-dm.org/ahtohbi4/postcss-bgimage
@@ -12,7 +14,7 @@ postcss-bgimage [![npm version][version-img]][version] [![Dependency Status][dep
 [codacy-img]: https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513
 [codacy]: https://www.codacy.com/app/alexandr-post/postcss-bgimage
 
-[PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
+> [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
 
 Installation
