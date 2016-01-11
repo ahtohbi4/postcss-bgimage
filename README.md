@@ -27,24 +27,7 @@ npm install postcss-bgimage --save-dev
 Usage
 -----------------
 
-#### [PostCSS](https://github.com/postcss/postcss#js-api)
-
-```javascript
-var postcss = require('postcss');
-var bgImage = require('postcss-bgimage');
-
-var processors = [
-    bgImage({
-        mode: 'cutter'
-    })
-];
-
-postcss(processors)
-    .process(src)
-    .css;
-```
-
-#### [Gulp PostCSS](https://github.com/w0rm/gulp-postcss)
+Any way of using [PostCSS](https://github.com/postcss/postcss#usage). For example, [Gulp PostCSS](https://github.com/w0rm/gulp-postcss):
 
 ```javascript
 var gulp = require('gulp');
