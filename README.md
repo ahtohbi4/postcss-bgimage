@@ -145,8 +145,13 @@ To ignore some CSS rules use `/* bgImage: ignore */`. For example:
 Options
 --------------------
 
-### Mode
+#### mode
+*(required)*
 
-One of two values:
- * `cutter` - removes "background:" and "background-image:" properties with external references through "url()" from source CSS;
- * `cutterInvertor`
+- `cutter` - Removes "background:" and "background-image:" properties with external references through "url()" from source CSS.
+- `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
+
+License
+--------------------
+
+MIT © Alexander Antonov <alexandr-post@yandex.ru>
