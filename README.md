@@ -148,5 +148,5 @@ Options
 ### Mode
 
 One of two values:
- * `cutter`
+ * `cutter` - removes "background:" and "background-image:" properties with external references through "url()" from source CSS;
  * `cutterInvertor`
