@@ -146,7 +146,7 @@ Options
 --------------------
 
 #### mode
-*(required)*
+*(required)* Mode of plugin.
 
 - `cutter` - Removes "background:" and "background-image:" properties with external references through "url()" from source CSS.
 - `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
