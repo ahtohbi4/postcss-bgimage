@@ -56,7 +56,7 @@ gulp.task('compile', function() {
 Result
 -----------------
 
-**Input:**
+**Input**
 
 ```css
 /* style.css */
@@ -68,7 +68,7 @@ body {
 }
 ```
 
-**Output:**
+**Output**
 
 ```css
 /* style.top.css */
@@ -86,11 +86,9 @@ body {
     background-image: url(/path/to/img.png);
 }
 ```
-**Using of resulting files:**
+**Using of the resulting files in HTML**
 
 ```html
-<!-- index.html -->
-
 <!doctype html>
 <html>
 <head>
@@ -109,10 +107,11 @@ body {
 
 To ignore some CSS rules use `/* bgImage: ignore */`. For example:
 
-**Input:**
+**Input**
 
-*style.css*
 ```css
+/* style.css */
+
 .some-rule {
     position: relative;
     background-image: url(/path/to/img1.png);
@@ -126,10 +125,11 @@ To ignore some CSS rules use `/* bgImage: ignore */`. For example:
 }
 ```
 
-**Output:**
+**Output**
 
-*style.top.css*
 ```css
+/* style.top.css */
+
 .some-rule {
     position: relative;
     font-family: Arial;
@@ -140,8 +140,10 @@ To ignore some CSS rules use `/* bgImage: ignore */`. For example:
     background: url(/path/to/img2.png);
 }
 ```
-*style.bottom.css*
+
 ```css
+/* style.bottom.css */
+
 .some-rule {
     background-image: url(/path/to/img1.png);
 }
