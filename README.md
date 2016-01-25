@@ -58,8 +58,9 @@ Result
 
 **Input:**
 
-*style.css*
 ```css
+/* style.css */
+
 body {
     background-image: url(/path/to/img.png);
     font-family: Arial;
@@ -69,24 +70,28 @@ body {
 
 **Output:**
 
-*style.top.css*
 ```css
+/* style.top.css */
+
 body {
     font-family: Arial;
     padding: 20px 10px;
 }
 ```
-*style.bottom.css*
+
 ```css
+/* style.bottom.css */
+
 body {
     background-image: url(/path/to/img.png);
 }
 ```
 **Using of resulting files:**
 
-*index.html*
 ```html
-<!DOCTYPE html>
+<!-- index.html -->
+
+<!doctype html>
 <html>
 <head>
     <title>postcss-bgimage test</title>
