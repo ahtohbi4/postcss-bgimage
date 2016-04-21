@@ -1,5 +1,5 @@
 postcss-bgimage
-==============
+==
 
 [![npm version][version-img]][version] [![Dependency Status][dependency-img]][dependency] [![Travis Build Status][travis-img]][travis] [![Appveyor Build Status][appveyor-img]][appveyor] [![Codacy Badge][codacy-img]][codacy]
 
@@ -14,18 +14,18 @@ postcss-bgimage
 [codacy-img]: https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513
 [codacy]: https://www.codacy.com/app/alexandr-post/postcss-bgimage
 
-> [PostCSS](https://github.com/postcss/postcss) plug-in which removes 'background-image' properties with 'url()' values
+> [PostCSS](https://github.com/postcss/postcss) plug-in which removes `background-image` properties with `url()` values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
 
 Installation
------------------
+--
 
 ```bash
 npm install postcss-bgimage --save-dev
 ```
 
 Usage
------------------
+--
 
 Any way of using [PostCSS](https://github.com/postcss/postcss#usage). For example, [Gulp PostCSS](https://github.com/w0rm/gulp-postcss):
 
@@ -54,7 +54,7 @@ gulp.task('compile', function() {
 ```
 
 Result
------------------
+--
 
 **Input**
 
@@ -150,7 +150,7 @@ To ignore some CSS rules use `/* bgImage: ignore */`. For example:
 ```
 
 Options
---------------------
+--
 
 #### mode
 *(required)* Mode of plugin.
@@ -159,6 +159,6 @@ Options
 - `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
 
 License
---------------------
+--
 
 MIT © Alexander Antonov <alexandr-post@yandex.ru>
