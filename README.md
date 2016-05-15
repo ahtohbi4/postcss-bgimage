@@ -21,7 +21,7 @@ Installation
 --
 
 ```bash
-npm install postcss-bgimage --save-dev
+$ npm install postcss-bgimage --save-dev
 ```
 
 Usage
@@ -157,6 +157,13 @@ Options
 
 - `cutter` - Removes "background:" and "background-image:" properties with external references through "url()" from source CSS.
 - `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
+
+Test
+--
+
+```bash
+$ npm test
+```
 
 License
 --
