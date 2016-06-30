@@ -15,7 +15,7 @@ postcss-bgimage
 [codacy]: https://www.codacy.com/app/alexandr-post/postcss-bgimage
 
 > [PostCSS](https://github.com/postcss/postcss) plug-in which removes `background-image` properties with `url()` values
-or leaves only its. It allows to separate your layouts CSS from the images CSS to boost speed showing of page.
+or leaves only its. It allows to separate your layouts CSS from the images CSS to boost a speed of showing a page.
 
 Installation
 --
@@ -153,7 +153,7 @@ Options
 --
 
 #### mode
-*(required)* Mode of plugin.
+*(required)* Mode of the plugin.
 
 - `cutter` - Removes "background:" and "background-image:" properties with external references through "url()" from source CSS.
 - `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
