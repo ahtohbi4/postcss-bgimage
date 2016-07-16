@@ -1,7 +1,7 @@
 {
   "author": "Alexandr Antonov",
   "name": "postcss-bgimage",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Plugin for PoscCSS to remove or keep only images by url() to optimize page loading",
   "main": "./index.js",
   "scripts": {
