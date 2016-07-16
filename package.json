@@ -27,8 +27,8 @@
     "postcss": "^5.0.0"
   },
   "devDependencies": {
-    "expect": "^1.12.2",
-    "mocha": "^2.3.3",
-    "postcss": "^5.0.10"
+    "expect": "^1.20.2",
+    "mocha": "^2.5.3",
+    "postcss": "^5.1.0"
   }
 }
