@@ -35,6 +35,18 @@ html { border: 1px dashed #f02; }
         float: left;
     }
 
+@keyframes some-ling_animationsName {
+    0% {
+        opacity: 1;
+    }
+    64% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .class-to-ignore {
     position: absolute;
     top: 0;

@@ -52,18 +52,25 @@ function cutterInvertor(css) {
         var ignored = ignoreChecking(rule),
             hasBgImage = false;
 
-        rule.walkDecls(function (decl) {
-            if (!ignored && PATTERN_BG_IMAGE.test(decl.prop) && PATTERN_URL.test(decl.value)) {
-                // Declaration has an URL for background property
-                hasBgImage = true;
+        if (rule.parent.type === 'atrule') {
+            // AtRule, such as @keyframes
+            return rule.parent.remove();
+        } else {
+            rule.walkDecls(function (decl) {
+                if (!ignored && PATTERN_BG_IMAGE.test(decl.prop) && PATTERN_URL.test(decl.value)) {
+                    // Declaration has an URL for background property
+                    hasBgImage = true;
 
+                } else {
+                    decl.remove();
+                }
+            });
+
+            if (!hasBgImage) {
+                return rule.remove();
             } else {
-                decl.remove();
+                return true;
             }
-        });
-
-        if (!hasBgImage) {
-            rule.remove();
         }
     });
 }
