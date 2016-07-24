@@ -1,7 +1,7 @@
 /**
  * Remove or keep only images by url() to optimize page loading
  *
- * @see https://github.com/postcss/postcss/blob/master/docs/api.md
+ * @see http://api.postcss.org/
  */
 var postcss = require('postcss'),
     PATTERN_IGNORE = /[\s]*bgImage[\s]*:[\s]*ignore[\s]*/i,
