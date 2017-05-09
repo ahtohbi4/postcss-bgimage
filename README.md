@@ -24,6 +24,12 @@ Installation
 $ npm install postcss-bgimage --save-dev
 ```
 
+or
+
+```bash
+$ yarn add postcss-bgimage --dev
+```
+
 Usage
 --
 
@@ -34,11 +40,11 @@ var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var bgImage = require('postcss-bgimage');
 
-gulp.task('compile', function() {
+gulp.task('compile', function () {
     gulp.src('css/style.css')
         .pipe(postcss([
             bgImage({
-                mode: 'cutter'
+                mode: 'cutter',
             })
         ]))
         .pipe(gulp.dest('compiled/css/style.top.css'));
@@ -46,7 +52,7 @@ gulp.task('compile', function() {
     gulp.src('css/style.css')
         .pipe(postcss([
             bgImage({
-                mode: 'cutterInvertor'
+                mode: 'cutterInvertor',
             })
         ]))
         .pipe(gulp.dest('compiled/css/style.bottom.css'));
