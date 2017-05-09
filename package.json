@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/ahtohbi4/postcss-bgimage#readme",
   "dependencies": {
-    "postcss": "^6.0.1"
+    "postcss": "6.0.1"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "mocha": "^3.3.0"
+    "expect": "1.20.2",
+    "mocha": "3.3.0"
   }
 }
