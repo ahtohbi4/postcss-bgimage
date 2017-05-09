@@ -171,6 +171,12 @@ Test
 $ npm test
 ```
 
+or
+
+```bash
+$ yarn test
+```
+
 License
 --
 
