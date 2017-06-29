@@ -48,29 +48,24 @@ function cutter(css) {
  * @return {Boolean}
  */
 function cutterInvertor(css) {
-    return css.walkRules(function (rule) {
-        var ignored = ignoreChecking(rule),
-            hasBgImage = false;
+    return css.each(function (node) {
+        if (node.type === 'rule') {
+            var isIgnored = ignoreChecking(node),
+                hasBgImage = false;
 
-        if (rule.parent.type === 'atrule') {
-            // AtRule, such as @keyframes
-            return rule.parent.remove();
-        } else {
-            rule.walkDecls(function (decl) {
-                if (!ignored && PATTERN_BG_IMAGE.test(decl.prop) && PATTERN_URL.test(decl.value)) {
-                    // Declaration has an URL for background property
+            node.walkDecls(function (decl) {
+                if (!isIgnored && PATTERN_BG_IMAGE.test(decl.prop) && PATTERN_URL.test(decl.value)) {
                     hasBgImage = true;
-
                 } else {
                     decl.remove();
                 }
             });
 
             if (!hasBgImage) {
-                return rule.remove();
-            } else {
-                return true;
+                node.remove();
             }
+        } else {
+            node.remove();
         }
     });
 }
