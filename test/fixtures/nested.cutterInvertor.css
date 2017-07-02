@@ -1,0 +1,45 @@
+@media
+    only screen
+    and (min-device-width: 320px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+    }
+
+    #some-selector {
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@supports (--foo: green) {
+    body {
+    }
+
+    p {
+    }
+
+    .some.composite > #selector + p::after {
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@media (max-width: 600px) {
+    @supports (display: flex) {
+        .some-super-nested-selector {
+            background-image: url(/path/to/picture.png);
+        }
+
+        .some-ignored-rule {
+            /* bgImage: ignore */
+        }
+    }
+
+    .some-other-selector {
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@media (min-device-width: 320px) {
+    .ignored-rule {
+        /* bgImage: ignore */
+    }
+}

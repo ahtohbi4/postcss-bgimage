@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+@namespace svg url(http://www.w3.org/2000/svg);
+
+@import url('landscape.css') screen and (orientation:landscape);

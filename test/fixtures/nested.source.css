@@ -1,0 +1,56 @@
+@media
+    only screen
+    and (min-device-width: 320px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        line-height: 1.4;
+        background: red;
+    }
+
+    #some-selector {
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@supports (--foo: green) {
+    body {
+        color: red;
+    }
+
+    p {
+        font-size: 3px;
+    }
+
+    .some.composite > #selector + p::after {
+        content: '';
+        background: #f30 url(/path/to/picture.png);
+    }
+}
+
+@media (max-width: 600px) {
+    @supports (display: flex) {
+        .some-super-nested-selector {
+            display: flex;
+            background: red url(/path/to/picture.png) 50%;
+            color: #345;
+        }
+
+        .some-ignored-rule {
+            /* bgImage: ignore */
+            background-image: url(/path/to/picture.png);
+        }
+    }
+
+    .some-other-selector {
+        display: block;
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@media (min-device-width: 320px) {
+    .ignored-rule {
+        /* bgImage: ignore */
+        background-image: url(/path/to/picture.png);
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,18 @@
+.some-rule {
+    background: red url(/path/to/picture.png) left 10% top 5% no-repeat;
+}
+
+.some-pure-rule {
+    background: url(/path/to/picture.png);
+}
+
+.some-rule-with-other-decls {
+    display: flex;
+    background: red url(/path/to/picture.png) left 10% top 5% no-repeat;
+    border-image: url(/path/to/picture.png);
+}
+
+.some-ignored-rule {
+    /* bgImage: ignore */
+    background: red url(/path/to/picture.png) left 10% top 5% no-repeat;
+}

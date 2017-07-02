@@ -1,38 +1,56 @@
-var fs = require('fs');
+import expect from 'expect';
+import postcss from 'postcss';
+import { readdirSync, readFileSync } from 'fs';
+import { join } from 'path';
 
-var expect = require('expect');
+import bgImage from '../src/';
 
-var postcss = require('postcss');
-var bgImage = require('..');
+const FIXTURES_DIR = './test/fixtures';
 
-var SRC = fs.readFileSync('test/fixtures/_.src.css');
+const PATTERN_SOURCE = /([^/]+)\.source\.css$/;
+const SUFFIX_CUTTER_RESULT = '.cutter';
+const SUFFIX_CUTTER_INVERTOR_RESULT = '.cutterInvertor';
 
-describe('cutter mode', function () {
-    it('should remove all background with url()', function() {
-        var dist = fs.readFileSync('test/fixtures/cutter.dest.css');
+const testUnits = readdirSync(FIXTURES_DIR)
+    .filter((filename) => PATTERN_SOURCE.test(filename))
+    .map((filename) => {
+        const alias = filename.match(PATTERN_SOURCE)[1];
 
-        var output = postcss()
-            .use(bgImage({
-                mode: 'cutter'
-            }))
-            .process(SRC)
-            .css;
-
-        expect(output).toEqual(dist.toString());
+        return {
+            alias,
+            cutter: readFileSync(join(FIXTURES_DIR, `${alias}${SUFFIX_CUTTER_RESULT}.css`)),
+            cutterInvertor: readFileSync(join(FIXTURES_DIR, `${alias}${SUFFIX_CUTTER_INVERTOR_RESULT}.css`)),
+            source: readFileSync(join(FIXTURES_DIR, filename)),
+        };
     });
-});
 
-describe('cutterInvertor mode', function () {
-    it('should remove all props except background with url()', function() {
-        var dist = fs.readFileSync('test/fixtures/cutterInvertor.dest.css');
+describe('Unit test', () => testUnits.forEach(
+    ({
+        alias,
+        cutter,
+        cutterInvertor,
+        source
+    }) => describe(`"${alias}"`, () => {
+        it('in "cutter" mode', () => {
+            const output = postcss()
+                .use(bgImage({
+                    mode: 'cutter',
+                }))
+                .process(source)
+                .css;
 
-        var output = postcss()
-            .use(bgImage({
-                mode: 'cutterInvertor'
-            }))
-            .process(SRC)
-            .css;
+            expect(output).toEqual(cutter.toString());
+        });
 
-        expect(output).toEqual(dist.toString());
-    });
-});
+        it('in "cutterInvertor" mode', () => {
+            const output = postcss()
+                .use(bgImage({
+                    mode: 'cutterInvertor',
+                }))
+                .process(source)
+                .css;
+
+            expect(output).toEqual(cutterInvertor.toString());
+        });
+    })
+));
