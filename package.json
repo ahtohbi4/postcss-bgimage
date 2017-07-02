@@ -3,7 +3,10 @@
   "name": "postcss-bgimage",
   "version": "1.4.3",
   "description": "Plugin for PoscCSS to remove or keep only images by url() to optimize page loading",
-  "main": "./index.js",
+  "main": "./src/index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "test": "mocha --require babel-polyfill --compilers js:babel-register",
     "test:watch": "mocha test --watch"
