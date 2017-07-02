@@ -38,6 +38,21 @@
     }
 }
 
+@media (max-width: 600px) {
+    /* bgImage: ignore */
+
+    @supports (display: flex) {
+        .ignored-super-nested-rule {
+        }
+
+        .ignored-rule {
+        }
+    }
+
+    .other-ignored-rule {
+    }
+}
+
 @media (min-device-width: 320px) {
     .ignored-rule {
         /* bgImage: ignore */

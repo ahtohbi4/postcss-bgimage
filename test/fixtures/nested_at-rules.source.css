@@ -8,6 +8,7 @@
     }
 
     #some-selector {
+        background-image: url(/path/to/picture.png);
     }
 }
 
@@ -22,7 +23,7 @@
 
     .some.composite > #selector + p::after {
         content: '';
-        background: #f30;
+        background: #f30 url(/path/to/picture.png);
     }
 }
 
@@ -30,7 +31,7 @@
     @supports (display: flex) {
         .some-super-nested-selector {
             display: flex;
-            background: red 50%;
+            background: red url(/path/to/picture.png) 50%;
             color: #345;
         }
 
@@ -42,6 +43,28 @@
 
     .some-other-selector {
         display: block;
+        background-image: url(/path/to/picture.png);
+    }
+}
+
+@media (max-width: 600px) {
+    /* bgImage: ignore */
+
+    @supports (display: flex) {
+        .ignored-super-nested-rule {
+            display: flex;
+            background: red url(/path/to/picture.png) 50%;
+            color: #345;
+        }
+
+        .ignored-rule {
+            background-image: url(/path/to/picture.png);
+        }
+    }
+
+    .other-ignored-rule {
+        display: block;
+        background-image: url(/path/to/picture.png);
     }
 }
 

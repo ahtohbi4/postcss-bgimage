@@ -24,33 +24,33 @@ const testUnits = readdirSync(FIXTURES_DIR)
         };
     });
 
-describe('Unit test', () => testUnits.forEach(
-    ({
-        alias,
-        cutter,
-        cutterInvertor,
-        source
-    }) => describe(`"${alias}"`, () => {
-        it('in "cutter" mode', () => {
-            const output = postcss()
-                .use(bgImage({
-                    mode: 'cutter',
-                }))
-                .process(source)
-                .css;
+describe('Unit tests for', () => testUnits.forEach(
+    (unit) => {
+        const { alias, cutter, cutterInvertor, source } = unit;
+        const unitName = alias.replace('_', ' ');
 
-            expect(output).toEqual(cutter.toString());
-        });
+        describe(unitName, () => {
+            it('in "cutter" mode', () => {
+                const output = postcss()
+                    .use(bgImage({
+                        mode: 'cutter',
+                    }))
+                    .process(source)
+                    .css;
 
-        it('in "cutterInvertor" mode', () => {
-            const output = postcss()
-                .use(bgImage({
-                    mode: 'cutterInvertor',
-                }))
-                .process(source)
-                .css;
+                expect(output).toEqual(cutter.toString());
+            });
 
-            expect(output).toEqual(cutterInvertor.toString());
-        });
-    })
+            it('in "cutterInvertor" mode', () => {
+                const output = postcss()
+                    .use(bgImage({
+                        mode: 'cutterInvertor',
+                    }))
+                    .process(source)
+                    .css;
+
+                expect(output).toEqual(cutterInvertor.toString());
+            });
+        })
+    }
 ));
