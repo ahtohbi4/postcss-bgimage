@@ -5,7 +5,7 @@ const PATTERN_URL = /url\([^)]+\)/i;
 
 /**
  * Destruction of shortcut 'background' by prop 'background-image' and the rest props.
- * @param  {Declaration} css
+ * @param {string} css
  */
 function destructShortcut(css) {
     css.walkDecls(PATTERN_BACKGROUND, (decl) => {

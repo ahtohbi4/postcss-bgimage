@@ -17,6 +17,7 @@
   },
   "keywords": [
     "postcss",
+    "postcss-plugin",
     "optimization",
     "background",
     "background-image",

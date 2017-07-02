@@ -9,8 +9,7 @@ const IGNORING_AT_RULES_NAMES = [
 ];
 
 /**
- * @param {String} css
- * @return {Boolean}
+ * @param {string} css
  */
 function cutterInvertor(css) {
     destructShortcut(css);
@@ -26,8 +25,6 @@ function cutterInvertor(css) {
             rule.remove();
         }
     });
-
-    return css;
 }
 
 module.exports = cutterInvertor;

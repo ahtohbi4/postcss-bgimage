@@ -4,7 +4,7 @@ const cutter = require('./cutter');
 const cutterInvertor = require('./cutterInvertor');
 
 /**
- * @param {String} mode
+ * @param  {string} mode
  * @return {void}
  */
 function getProcessor(mode) {
@@ -21,7 +21,7 @@ function getProcessor(mode) {
 }
 
 /**
- * @param {Object} options plugin options
+ * @param  {object} options - plugin options
  * @return {void}
  */
 module.exports = postcss.plugin('postcss-bgimage', (options) => {

@@ -4,8 +4,7 @@ const isNodeIgnored = require('./isNodeIgnored');
 const PATTERN_BACKGROUND_IMAGE = /background\-image/i;
 
 /**
- * @param {String} css
- * @return {Boolean}
+ * @param {string} css
  */
 function cutter(css) {
     destructShortcut(css);
@@ -15,8 +14,6 @@ function cutter(css) {
             decl.remove();
         }
     });
-
-    return css;
 }
 
 module.exports = cutter;

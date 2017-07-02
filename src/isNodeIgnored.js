@@ -1,5 +1,10 @@
 const PATTERN_IGNORE = /[\s]*bgImage[\s]*:[\s]*ignore[\s]*/i;
 
+/**
+ * Check instruction to ignore the node.
+ * @param  {Node} node
+ * @return {boolean}
+ */
 function isNodeIgnored(node) {
     const parent = node.parent;
 

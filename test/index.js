@@ -54,3 +54,25 @@ describe('Unit tests for', () => testUnits.forEach(
         })
     }
 ));
+
+describe('Throws an error', () => {
+    it('when mode is not defined', () => {
+        expect(() => {
+            postcss()
+                .use(bgImage())
+                .process('a { color: blue }')
+                .css;
+        }).toThrow(Error);
+    });
+
+    it('when is defined unknown mode', () => {
+        expect(() => {
+            postcss()
+                .use(bgImage({
+                    mode: 'undefined',
+                }))
+                .process('a { color: blue }')
+                .css;
+        }).toThrow(Error);
+    });
+});
