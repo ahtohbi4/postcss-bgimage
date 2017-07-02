@@ -14,7 +14,7 @@ postcss-bgimage
 [codacy-img]: https://api.codacy.com/project/badge/grade/480c7aa1737046bfa6d475082847d513
 [codacy]: https://www.codacy.com/app/alexandr-post/postcss-bgimage
 
-> [PostCSS](https://github.com/postcss/postcss) plug-in which removes `background-image` properties with `url()` values
+> [PostCSS](https://github.com/postcss/postcss) plugin which removes `background-image` properties with `url()` values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost a speed of showing a page.
 
 Installation
@@ -62,6 +62,8 @@ gulp.task('compile', function () {
 Result
 --
 
+### Common use
+
 **Input**
 
 ```css
@@ -92,7 +94,186 @@ body {
     background-image: url(/path/to/img.png);
 }
 ```
-**Using of the resulting files in HTML**
+
+### Using with shortcut `background`
+
+**Input**
+
+```css
+/* style.css */
+
+#some {
+    display: flex;
+    background: #f30 url(/path/to/img.png) 50% no-repeat;
+    color: #fff;
+}
+```
+
+**Output**
+
+```css
+/* style.top.css */
+
+#some {
+    display: inline-block;
+    background: #f30 50% no-repeat;
+    color: #fff;
+}
+```
+
+```css
+/* style.bottom.css */
+
+#some {
+    background-image: url(/path/to/img.png);
+}
+```
+
+### Using in nested at-rules
+
+**Input**
+
+```css
+/* style.css */
+
+@media (min-width: 320px) {
+    .title + .list > li {
+        background: url(/path/to/img.png);
+    }
+
+    @supports (display: flex) {
+        .panel {
+            display: flex;
+            background: url(/path/to/img.png);
+        }
+    }
+
+    .panel {
+        display: block;
+    }
+}
+```
+
+**Output**
+
+```css
+/* style.top.css */
+
+@media (min-width: 320px) {
+    .title + .list > li {
+    }
+
+    @supports (display: flex) {
+        .panel {
+            display: flex;
+        }
+    }
+
+    .panel {
+        display: block;
+    }
+}
+```
+
+```css
+/* style.bottom.css */
+
+@media (min-width: 320px) {
+    .title + .list > li {
+        background: url(/path/to/img.png);
+    }
+
+    @supports (display: flex) {
+        .panel {
+            background: url(/path/to/img.png);
+        }
+    }
+
+    .panel {
+    }
+}
+```
+
+> :boom::boom::boom: Note, that the plugin only removes CSS-props. Do not expect cleaning empty rules after that.
+Use special plugins for it ([csso](https://github.com/css/csso), [cssnano](http://cssnano.co/) and etc.).
+
+### Ignore rules
+
+To ignore some CSS rules use comment `/* bgImage: ignore */`. For example:
+
+**Input**
+
+```css
+/* style.css */
+
+.some-rule {
+    display: inline-block;
+    /* bgImage: ignore */
+    background: url(/path/to/img2.png);
+}
+
+@media (min-width: 320px) {
+    /* bgImage: ignore */
+    @supports (--color: red) {
+        .some-rule {
+            background: url(/path/to/img2.png);
+            color: var(--color);
+        }
+    }
+
+    .some-rule {
+        display: inline-block;
+        background: url(/path/to/img2.png);
+    }
+}
+```
+
+**Output**
+
+```css
+/* style.top.css */
+
+.some-rule {
+    display: inline-block;
+    /* bgImage: ignore */
+    background: url(/path/to/img2.png);
+}
+
+@media (min-width: 320px) {
+    /* bgImage: ignore */
+    @supports (--color: red) {
+        .some-rule {
+            background: url(/path/to/img2.png);
+            color: var(--color);
+        }
+    }
+
+    .some-rule {
+        display: inline-block;
+        background: url(/path/to/img2.png);
+    }
+}
+```
+
+```css
+/* style.bottom.css */
+
+.some-rule {
+}
+
+@media (min-width: 320px) {
+    /* bgImage: ignore */
+    @supports (--color: red) {
+        .some-rule {
+        }
+    }
+
+    .some-rule {
+    }
+}
+```
+
+### Using of the resulting files in HTML
 
 ```html
 <!doctype html>
@@ -104,55 +285,9 @@ body {
 <body>
     <h1>postcss-bgimage test</h1>
     <p>Page content</p>
-    <link rel="stylesheet" href="/compiled/css/style.bottom.css">
 </body>
 </html>
-```
-
-#### Ignore rules
-
-To ignore some CSS rules use `/* bgImage: ignore */`. For example:
-
-**Input**
-
-```css
-/* style.css */
-
-.some-rule {
-    position: relative;
-    background-image: url(/path/to/img1.png);
-    font-family: Arial;
-    padding: 20px 10px;
-}
-.ignore-rule {
-    display: inline-block;
-    /* bgImage: ignore */
-    background: url(/path/to/img2.png);
-}
-```
-
-**Output**
-
-```css
-/* style.top.css */
-
-.some-rule {
-    position: relative;
-    font-family: Arial;
-    padding: 20px 10px;
-}
-.ignore-rule {
-    display: inline-block;
-    background: url(/path/to/img2.png);
-}
-```
-
-```css
-/* style.bottom.css */
-
-.some-rule {
-    background-image: url(/path/to/img1.png);
-}
+<link rel="stylesheet" href="/compiled/css/style.bottom.css">
 ```
 
 Options
@@ -161,8 +296,9 @@ Options
 #### mode
 *(required)* Mode of the plugin.
 
-- `cutter` - Removes "background:" and "background-image:" properties with external references through "url()" from source CSS.
-- `cutterInvertor` - Removes all CSS rules without "background-image" and leaves only this property for other ones.
+- `cutter` - Removes `background-image:` properties with external references through `url()` from
+source CSS.
+- `cutterInvertor` - Removes all CSS rules without `background-image` and leaves only this property for other ones.
 
 Test
 --
