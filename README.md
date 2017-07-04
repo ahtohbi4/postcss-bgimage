@@ -289,6 +289,23 @@ To ignore some CSS rules use comment `/* bgImage: ignore */`. For example:
 <link rel="stylesheet" href="/compiled/css/style.bottom.css">
 ```
 
+Or (in a case of small size) you can inject top CSS in `<head>` with `<style>` to decrease the number of blocking HTTP requests.
+
+```html
+<!doctype html>
+<html>
+<head>
+    <title>postcss-bgimage test</title>
+    <style>/* Content of your /compiled/css/style.top.css */</style>
+</head>
+<body>
+    <h1>postcss-bgimage test</h1>
+    <p>Page content</p>
+</body>
+</html>
+<link rel="stylesheet" href="/compiled/css/style.bottom.css">
+```
+
 Options
 --
 
