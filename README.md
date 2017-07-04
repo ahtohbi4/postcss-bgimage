@@ -17,6 +17,8 @@ postcss-bgimage
 > [PostCSS](https://github.com/postcss/postcss) plugin which removes `background-image` properties with `url()` values
 or leaves only its. It allows to separate your layouts CSS from the images CSS to boost a speed of showing a page.
 
+:boom: **Note!** The plugin only removes CSS declarations. Do not expect cleaning empty rules after that. Use special plugins for it ([csso](https://github.com/css/csso), [cssnano](http://cssnano.co/) and other).
+
 Installation
 --
 
@@ -193,8 +195,6 @@ body {
     }
 }
 ```
-
-> :boom: **Note!** The plugin only removes CSS declarations. Do not expect cleaning empty rules after that. Use special plugins for it ([csso](https://github.com/css/csso), [cssnano](http://cssnano.co/) and other).
 
 ### Ignore rules
 
