@@ -194,8 +194,7 @@ body {
 }
 ```
 
-> :boom::boom::boom: Note, that the plugin only removes CSS-props. Do not expect cleaning empty rules after that.
-Use special plugins for it ([csso](https://github.com/css/csso), [cssnano](http://cssnano.co/) and etc.).
+> :boom: Note! The plugin only removes CSS declarations. Do not expect cleaning empty rules after that. Use special plugins for it ([csso](https://github.com/css/csso), [cssnano](http://cssnano.co/) and other).
 
 ### Ignore rules
 
