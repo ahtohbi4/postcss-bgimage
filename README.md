@@ -276,15 +276,17 @@ To ignore some CSS rules use comment `/* bgImage: ignore */`. For example:
 
 ```html
 <!doctype html>
+
 <html>
-<head>
-    <title>postcss-bgimage test</title>
-    <link rel="stylesheet" href="/compiled/css/style.top.css">
-</head>
-<body>
-    <h1>postcss-bgimage test</h1>
-    <p>Page content</p>
-</body>
+    <head>
+        <title>postcss-bgimage test</title>
+        <link rel="stylesheet" href="/compiled/css/style.top.css">
+    </head>
+
+    <body>
+        <h1>postcss-bgimage test</h1>
+        <p>Page content</p>
+    </body>
 </html>
 <link rel="stylesheet" href="/compiled/css/style.bottom.css">
 ```
@@ -293,15 +295,17 @@ Or (in a case of small size) you can inject top CSS in `<head>` with `<style>` t
 
 ```html
 <!doctype html>
+
 <html>
-<head>
-    <title>postcss-bgimage test</title>
-    <style>/* Content of your /compiled/css/style.top.css */</style>
-</head>
-<body>
-    <h1>postcss-bgimage test</h1>
-    <p>Page content</p>
-</body>
+    <head>
+        <title>postcss-bgimage test</title>
+        <style>/* Content of your /compiled/css/style.top.css */</style>
+    </head>
+
+    <body>
+        <h1>postcss-bgimage test</h1>
+        <p>Page content</p>
+    </body>
 </html>
 <link rel="stylesheet" href="/compiled/css/style.bottom.css">
 ```
