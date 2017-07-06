@@ -17,7 +17,7 @@
 .rule-with-shortcut {
     background:
         url(/path/to/picture1.png) center left no-repeat,
-        url(/path/to/picture2.png) 50% repeat,
+        url(/path/to/picture2.png),
         url(/path/to/picture3.png) repeat-x
         rgba(216, 21, 35, .5);
 }

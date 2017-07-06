@@ -1,4 +1,4 @@
-.rute {
+.rute-pure {
     background-image: linear-gradient(to bottom, red, rgba(216, 21, 64, .4) 15%);
 }
 
@@ -8,7 +8,7 @@
     padding: 14em;
 }
 
-.rule-prefixed {
+.rule-with-prefixed-values {
     background-image: -moz-radial-gradient(circle at center, red 0, blue, green 100%);
     background-image: -webkit-radial-gradient(circle at center, red 0, blue, green 100%);
     background-image: radial-gradient(circle at center, red 0, blue, green 100%);

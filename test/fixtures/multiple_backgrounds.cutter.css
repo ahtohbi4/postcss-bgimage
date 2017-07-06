@@ -9,8 +9,7 @@
 .rule-with-shortcut {
     background:
         center left no-repeat,
-        repeat,
-        50% repeat,
+        initial,
         repeat-x
         rgba(216, 21, 35, .5);
 }
