@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha --require babel-polyfill --compilers js:babel-register",
-    "test:watch": "mocha test --watch"
+    "test:watch": "mocha --watch --require babel-polyfill --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
