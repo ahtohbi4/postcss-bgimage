@@ -64,7 +64,7 @@ gulp.task('compile', function () {
 Result
 --
 
-### Common use
+### Common usage
 
 **Input**
 
@@ -97,7 +97,7 @@ body {
 }
 ```
 
-### Using with shortcut `background`
+### Usage with shortcut `background`
 
 **Input**
 
