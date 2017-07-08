@@ -1,0 +1,23 @@
+.rule {
+    display: flex;
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png),
+        url(/path/to/picture3.png);
+}
+
+.rule-with-gradients {
+    display: flex;
+    background-image:
+        linear-gradient(to bottom right, red, #fff),
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png);
+}
+
+.rule-with-shortcut {
+    background:
+        url(/path/to/picture1.png) center left no-repeat,
+        url(/path/to/picture2.png) 50% repeat,
+        url(/path/to/picture3.png) repeat-x
+        rgba(216, 21, 35, .5);
+}

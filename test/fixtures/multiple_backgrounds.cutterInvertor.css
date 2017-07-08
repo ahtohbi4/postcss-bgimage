@@ -1,0 +1,20 @@
+.rule {
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png),
+        url(/path/to/picture3.png);
+}
+
+.rule-with-gradients {
+    background-image:
+        linear-gradient(to bottom right, red, #fff),
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png);
+}
+
+.rule-with-shortcut {
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png),
+        url(/path/to/picture3.png);
+}

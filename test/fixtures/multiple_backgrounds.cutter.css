@@ -1,0 +1,16 @@
+.rule {
+    display: flex;
+}
+
+.rule-with-gradients {
+    display: flex;
+}
+
+.rule-with-shortcut {
+    background:
+        center left no-repeat,
+        repeat,
+        50% repeat,
+        repeat-x
+        rgba(216, 21, 35, .5);
+}

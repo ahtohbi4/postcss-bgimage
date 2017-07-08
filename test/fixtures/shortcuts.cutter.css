@@ -1,17 +1,21 @@
-.some-rule {
+.rule {
     background: red left 10% top 5% no-repeat;
 }
 
-.some-pure-rule {
+.pure-rule {
 }
 
-.some-rule-with-other-decls {
+.rule-without-url {
+    background: red;
+}
+
+.rule-with-other-decls {
     display: flex;
     background: red left 10% top 5% no-repeat;
     border-image: url(/path/to/picture.png);
 }
 
-.some-ignored-rule {
+.ignored-rule {
     /* bgImage: ignore */
     background: red url(/path/to/picture.png) left 10% top 5% no-repeat;
 }

@@ -1,0 +1,15 @@
+.rute {
+    background-image: linear-gradient(to bottom, red, rgba(216, 21, 64, .4) 15%);
+}
+
+.rule-with-other-decls {
+    display: flex;
+    background-image: linear-gradient(to bottom, red, rgba(216, 21, 64, .4) 15%);
+    padding: 14em;
+}
+
+.rule-prefixed {
+    background-image: -moz-radial-gradient(circle at center, red 0, blue, green 100%);
+    background-image: -webkit-radial-gradient(circle at center, red 0, blue, green 100%);
+    background-image: radial-gradient(circle at center, red 0, blue, green 100%);
+}

@@ -1,15 +1,18 @@
-.some-rule {
+.rule {
     background-image: url(/path/to/picture.png);
 }
 
-.some-pure-rule {
+.pure-rule {
     background-image: url(/path/to/picture.png);
 }
 
-.some-rule-with-other-decls {
+.rule-without-url {
+}
+
+.rule-with-other-decls {
     background-image: url(/path/to/picture.png);
 }
 
-.some-ignored-rule {
+.ignored-rule {
     /* bgImage: ignore */
 }

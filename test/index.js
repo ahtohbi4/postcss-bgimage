@@ -58,7 +58,7 @@ describe('Unit tests for', () => testUnits.forEach(
 describe('Throws an error', () => {
     it('when mode is not defined', () => {
         expect(() => {
-            postcss()
+            const result = postcss()
                 .use(bgImage())
                 .process('a { color: blue }')
                 .css;
@@ -67,7 +67,7 @@ describe('Throws an error', () => {
 
     it('when is defined unknown mode', () => {
         expect(() => {
-            postcss()
+            const result = postcss()
                 .use(bgImage({
                     mode: 'undefined',
                 }))
