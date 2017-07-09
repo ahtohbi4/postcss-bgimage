@@ -1,0 +1,62 @@
+.rule-without-url {
+    background: red;
+}
+
+.rule-url-only {
+    background-image: url(/path/to/picture.png);
+}
+
+.rule {
+    background: repeat;
+    background-image: url(/path/to/picture.png);
+}
+
+.rule-multiple {
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png);
+}
+
+.rule-multiple-with-color {
+    background:
+        rgba(123,45,56,.9)
+        initial,
+        repeat;
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png);
+}
+
+.rule-with-gradient {
+    background: linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red);
+}
+
+.rule-separated {
+    background: #f30 no-repeat;
+    background-image: url(/path/to/picture.png);
+}
+
+.rule-with-url-gradient-color {
+    background:
+        initial,
+        50% repeat-x,
+        linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red)
+        #f32;
+    background-image:
+        url(/path/to/picture1.png),
+        url(/path/to/picture2.png),
+        linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red);
+}
+
+.rule-with-prefixed-values {
+    background: red;
+    background-image:
+        url(/path/to/picture1.png),
+        -moz-linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red);
+    background-image:
+        url(/path/to/picture1.png),
+        -webkit-linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red);
+    background-image:
+        url(/path/to/picture1.png),
+        linear-gradient(to top, rgba(255, 22, 31, .81) 43%, red);
+}
