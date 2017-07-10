@@ -6,3 +6,9 @@
 
 .rule-with-prefixed-values {
 }
+
+.rule-with-url-and-gradient {
+    background-image:
+        url(/path/to/picture.png),
+        linear-gradient(to top, rgba(255, 200, 12, .82) 5%, red);
+}

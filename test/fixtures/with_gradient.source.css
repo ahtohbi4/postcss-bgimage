@@ -13,3 +13,10 @@
     background-image: -webkit-radial-gradient(circle at center, red 0, blue, green 100%);
     background-image: radial-gradient(circle at center, red 0, blue, green 100%);
 }
+
+.rule-with-url-and-gradient {
+    background:
+        url(/path/to/picture.png),
+        linear-gradient(to top, rgba(255, 200, 12, .82) 5%, red)
+        red;
+}
