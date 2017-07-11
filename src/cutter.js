@@ -1,4 +1,5 @@
 const destructShortcut = require('./destructShortcut');
+const hasValueUrl = require('./hasValueUrl');
 const isNodeIgnored = require('./isNodeIgnored');
 
 const PATTERN_BACKGROUND_IMAGE = /background\-image/i;
@@ -10,7 +11,7 @@ function cutter(css) {
     destructShortcut(css);
 
     css.walkDecls(PATTERN_BACKGROUND_IMAGE, (decl) => {
-        if (!isNodeIgnored(decl)) {
+        if (hasValueUrl(decl.value) && !isNodeIgnored(decl)) {
             decl.remove();
         }
     });
