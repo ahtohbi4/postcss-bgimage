@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/ahtohbi4/postcss-bgimage#readme",
   "dependencies": {
+    "css-color-list": "0.0.2",
     "postcss": "6.0.1"
   },
   "devDependencies": {
