@@ -8,8 +8,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "mocha --require babel-polyfill --compilers js:babel-register",
-    "test:watch": "mocha --watch --require babel-polyfill --compilers js:babel-register"
+    "test": "mocha --require babel-polyfill --compilers js:babel-register test/*.js test/**/*.js",
+    "test:watch": "mocha --watch --require babel-polyfill --compilers js:babel-register test/*.js test/**/*.js"
   },
   "repository": {
     "type": "git",
