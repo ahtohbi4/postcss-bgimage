@@ -4,7 +4,7 @@ import { readFile } from 'fs';
 
 import destructShortcut from '../../src/destructShortcut';
 
-describe('Destructor', () => {
+describe('module destructShortcut', () => {
     it('should to separate "background-image" property from "background" shortcut', (done) => {
         readFile('./test/destructShortcut/fixtures/source.css', (error, source) => {
             if (error) {

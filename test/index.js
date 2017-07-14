@@ -24,7 +24,7 @@ const testUnits = readdirSync(FIXTURES_DIR)
         };
     });
 
-describe('Unit tests for', () => testUnits.forEach(
+describe('Plugin "postcss-bgimage" in case', () => testUnits.forEach(
     (unit) => {
         const { alias, cutter, cutterInvertor, source } = unit;
         const unitName = alias.replace('_', ' ');
