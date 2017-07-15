@@ -2,21 +2,21 @@ import expect from 'expect';
 import postcss from 'postcss';
 import { readFile } from 'fs';
 
-import destructShortcut from '../../src/destructShortcut';
+import destructShorthand from '../../src/destructShorthand';
 
-describe('module destructShortcut', () => {
-    it('should to separate "background-image" property from "background" shortcut', (done) => {
-        readFile('./test/destructShortcut/fixtures/source.css', (error, source) => {
+describe('module destructShorthand', () => {
+    it('should to separate "background-image" property from "background" shorthand', (done) => {
+        readFile('./test/destructShorthand/fixtures/source.css', (error, source) => {
             if (error) {
                 throw new Error(error);
             }
 
             postcss([
-                postcss.plugin('destruct-shortcut', () => (css) => destructShortcut(css)),
+                postcss.plugin('destruct-shorthand', () => (css) => destructShorthand(css)),
             ])
                 .process(source)
                 .then(result => {
-                    readFile('./test/destructShortcut/fixtures/expected.css', (error, expected) => {
+                    readFile('./test/destructShorthand/fixtures/expected.css', (error, expected) => {
                         if (error) {
                             throw new Error(error);
                         }

@@ -1,4 +1,4 @@
-const destructShortcut = require('./destructShortcut');
+const destructShorthand = require('./destructShorthand');
 const hasValueUrl = require('./hasValueUrl');
 const isNodeIgnored = require('./isNodeIgnored');
 
@@ -13,7 +13,7 @@ const IGNORING_AT_RULES_NAMES = [
  * @param {string} css
  */
 function cutterInvertor(css) {
-    destructShortcut(css);
+    destructShorthand(css);
 
     css.walkDecls((decl) => {
         if (isNodeIgnored(decl) || !hasValueUrl(decl.value) || !PATTERN_BACKGROUND_IMAGE.test(decl.prop)) {

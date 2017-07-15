@@ -13,10 +13,10 @@ const PATTERN_START_BACKGROUND_COLOR = new RegExp(`^${PATTERN_COLOR}[\s]*`, 'i')
 const PATTERN_END_BACKGROUND_COLOR = new RegExp(`[\s]*${PATTERN_COLOR}$`, 'i');
 
 /**
- * Destruction of shortcut 'background' by prop 'background-image' and the rest props.
+ * Destruction of shorthand 'background' by prop 'background-image' and the rest props.
  * @param {string} css
  */
-function destructShortcut(css) {
+function destructShorthand(css) {
     css.walkDecls(PATTERN_BACKGROUND, (decl) => {
         if (!isNodeIgnored(decl)) {
             const value = decl.value;
@@ -129,4 +129,4 @@ function destructShortcut(css) {
     });
 }
 
-module.exports = destructShortcut;
+module.exports = destructShorthand;
