@@ -2,7 +2,7 @@ const destructShorthand = require('./destructShorthand');
 const hasValueUrl = require('./hasValueUrl');
 const isNodeIgnored = require('./isNodeIgnored');
 
-const PATTERN_BACKGROUND_IMAGE = /background\-image/i;
+const PATTERN_BACKGROUND_IMAGE = /background-image/i;
 
 /**
  * @param {string} css

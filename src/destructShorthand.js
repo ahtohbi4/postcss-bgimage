@@ -2,15 +2,15 @@ const cssColorList = require('css-color-list');
 
 const isNodeIgnored = require('./isNodeIgnored');
 
-const PATTERN_BACKGROUND = /background(?!\-)/i;
+const PATTERN_BACKGROUND = /background(?!-)/i;
 const PATTERN_GRADIENT = /[a-z-]*gradient\((?:(?:hls|rgb)a?\([^()]*\)[^,]*[,]?|[^,]+[,]?)+\)/i;
 const PATTERN_URL = /url\([^)]+\)[\s]*/i;
 
 // @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
 const colorList = cssColorList();
-const PATTERN_COLOR = `(?:(?:rgb|hls)a?[(][^)]*[)]|#[0-9a-f]{3,8}|${colorList.join('|')})`;
-const PATTERN_START_BACKGROUND_COLOR = new RegExp(`^${PATTERN_COLOR}[\s]*`, 'i');
-const PATTERN_END_BACKGROUND_COLOR = new RegExp(`[\s]*${PATTERN_COLOR}$`, 'i');
+const PATTERN_COLOR = `(?:(?:rgb|hls)a?\\([^)]*\\)|#[0-9a-f]{3,8}|${colorList.join('|')})`;
+const PATTERN_START_BACKGROUND_COLOR = new RegExp(`^${PATTERN_COLOR}[\\s]*`, 'i');
+const PATTERN_END_BACKGROUND_COLOR = new RegExp(`[\\s]*${PATTERN_COLOR}$`, 'i');
 
 /**
  * Destruction of shorthand 'background' by prop 'background-image' and the rest props.
@@ -42,15 +42,18 @@ function destructShorthand(css) {
                             return [
                                 subLine,
                             ];
-                       }
+                        }
 
                         const indexLast = result.length - 1;
                         const subLineLast = result[indexLast];
 
                         if ((subLineLast.match(/\(/g) || []).length !== (subLineLast.match(/\)/g) || []).length) {
-                            result[indexLast] += `,${subLine}`;
+                            const lastItem = `${result[indexLast]},${subLine}`;
 
-                            return result;
+                            return [
+                                ...result.slice(0, -1),
+                                lastItem,
+                            ];
                         }
 
                         return [
