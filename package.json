@@ -12,7 +12,7 @@
     "lint:staged": "lint-staged",
     "test": "mocha --require babel-polyfill --compilers js:babel-register test/*.js test/**/*.js",
     "test:watch": "mocha --watch --require babel-polyfill --compilers js:babel-register test/*.js test/**/*.js",
-    "prepublishOnly": "lint:js && npm test"
+    "preversion": "lint:js && npm test"
   },
   "lint-staged": {
     "*.js": "lint:js"
