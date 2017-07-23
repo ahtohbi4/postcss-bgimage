@@ -1,3 +1,7 @@
+# [v2.0.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v2.0.0-beta.0...v2.0.0)
+
+#### Bug Fixes
+
 # [v2.0.0-beta.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v1.4.3...v2.0.0-beta.0)
 
 #### Features
