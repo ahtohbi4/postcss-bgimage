@@ -12,7 +12,7 @@
     }
 }
 
-@supports (--foo: green) {
+@supports (display: flex) {
     body {
         color: red;
     }
