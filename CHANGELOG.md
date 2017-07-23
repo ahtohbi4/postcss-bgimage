@@ -1,3 +1,13 @@
+# [v2.0.0-beta.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v1.4.3...v2.0.0-beta.0)
+
+#### Features
+
+* Splitting shorthand declaration `background`.
+* Support a gradients in declarations values.
+* Support multiple backgrounds layers.
+* Support nested rules `@media` and `@support`.
+* Instruction `bgImage: ignore` for nested levels.
+
 # [v1.4.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v1.3.0...v1.4.3)
 
 > Jun 29 2017
