@@ -2,38 +2,35 @@
     only screen
     and (min-device-width: 320px)
     and (-webkit-min-device-pixel-ratio: 2) {
-    body {
+    .rule-without-background-image {
     }
 
-    #some-selector {
+    .rule-with-background-image {
         background-image: url(/path/to/picture.png);
     }
 }
 
 @supports (display: flex) {
-    body {
+    .rule-without-background-image {
     }
 
-    p {
-    }
-
-    .some.composite > #selector + p::after {
+    .rule-with-background-shorthand::after {
         background-image: url(/path/to/picture.png);
     }
 }
 
 @media (max-width: 600px) {
     @supports (display: flex) {
-        .some-super-nested-selector {
+        .rule-with-background-shorthand {
             background-image: url(/path/to/picture.png);
         }
 
-        .some-ignored-rule {
+        .rule-ignored {
             /* bgImage: ignore */
         }
     }
 
-    .some-other-selector {
+    .rule-with-background-image {
         background-image: url(/path/to/picture.png);
     }
 }
@@ -42,19 +39,19 @@
     /* bgImage: ignore */
 
     @supports (display: flex) {
-        .ignored-super-nested-rule {
+        .rule-with-background-shorthand-ignored {
         }
 
-        .ignored-rule {
+        .rule-with-background-image-ignored {
         }
     }
 
-    .other-ignored-rule {
+    .rule-with-background-image-ignored {
     }
 }
 
 @media (min-device-width: 320px) {
-    .ignored-rule {
+    .rule-with-background-image-ignored {
         /* bgImage: ignore */
     }
 }
