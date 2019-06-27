@@ -1,35 +1,37 @@
-const postcss = require('postcss');
+import postcss from 'postcss';
 
-const cutter = require('./cutter');
-const cutterInvertor = require('./cutterInvertor');
+import cutter from './cutter';
+import cutterInvertor from './cutterInvertor';
 
 /**
- * @param  {string} mode
- * @return {void}
+ * @param {string} mode
+ *
+ * @returns {void}
  */
 function getProcessor(mode) {
-    switch (mode) {
-        case 'cutter':
-            return cutter;
+  switch (mode) {
+    case 'cutter':
+      return cutter;
 
-        case 'cutterInvertor':
-            return cutterInvertor;
+    case 'cutterInvertor':
+      return cutterInvertor;
 
-        default:
-            throw new Error(`Unknow mode for postcss-bgimage: ${mode}`);
-    }
+    default:
+      throw new Error(`Unknow mode for postcss-bgimage: ${mode}`);
+  }
 }
 
 /**
- * @param  {object} options - plugin options
- * @return {void}
+ * @param {object} options - Plugin options.
+ *
+ * @returns {void}
  */
-module.exports = postcss.plugin('postcss-bgimage', (options) => {
-    if (!options) {
-        throw new Error('Required params was not passed.');
-    }
+export default postcss.plugin('postcss-bgimage', (options) => {
+  if (!options) {
+    throw new Error('Required params was not passed.');
+  }
 
-    const mode = options.mode;
+  const { mode } = options;
 
-    return (css) => getProcessor(mode)(css);
+  return (css) => getProcessor(mode)(css);
 });

@@ -1,6 +1,6 @@
-const cssColorList = require('css-color-list');
+import cssColorList from 'css-color-list';
 
-const isNodeIgnored = require('./isNodeIgnored');
+import isNodeIgnored from './isNodeIgnored';
 
 const PATTERN_BACKGROUND = /background(?!-)/i;
 const PATTERN_GRADIENT = /[a-z-]*gradient\((?:(?:hls|rgb)a?\([^()]*\)[^,]*[,]?|[^,]+[,]?)+\)/i;
@@ -14,122 +14,116 @@ const PATTERN_END_BACKGROUND_COLOR = new RegExp(`[\\s]*${PATTERN_COLOR}$`, 'i');
 
 /**
  * Destruction of shorthand 'background' by prop 'background-image' and the rest props.
+ *
  * @param {string} css
  */
-function destructShorthand(css) {
-    css.walkDecls(PATTERN_BACKGROUND, (decl) => {
-        if (!isNodeIgnored(decl)) {
-            const value = decl.value;
-            const hasURL = PATTERN_URL.test(value);
+export default function destructShorthand(css) {
+  css.walkDecls(PATTERN_BACKGROUND, (decl) => {
+    if (!isNodeIgnored(decl)) {
+      const { value } = decl;
+      const hasURL = PATTERN_URL.test(value);
 
-            if (hasURL) {
-                let valueStartBgColor = '';
-                let valueEndBgColor = '';
-                const layers = value
-                    .replace(PATTERN_START_BACKGROUND_COLOR, (match) => {
-                        valueStartBgColor = match;
+      if (hasURL) {
+        let valueStartBgColor = '';
+        let valueEndBgColor = '';
+        const layers = value
+          .replace(PATTERN_START_BACKGROUND_COLOR, (match) => {
+            valueStartBgColor = match;
 
-                        return '';
-                    })
-                    .replace(PATTERN_END_BACKGROUND_COLOR, (match) => {
-                        valueEndBgColor = match;
+            return '';
+          })
+          .replace(PATTERN_END_BACKGROUND_COLOR, (match) => {
+            valueEndBgColor = match;
 
-                        return '';
-                    })
-                    .split(/,/)
-                    .reduce((result, subLine, index) => {
-                        if (index === 0) {
-                            return [
-                                subLine,
-                            ];
-                        }
-
-                        const indexLast = result.length - 1;
-                        const subLineLast = result[indexLast];
-
-                        if ((subLineLast.match(/\(/g) || []).length !== (subLineLast.match(/\)/g) || []).length) {
-                            const lastItem = `${result[indexLast]},${subLine}`;
-
-                            return [
-                                ...result.slice(0, -1),
-                                lastItem,
-                            ];
-                        }
-
-                        return [
-                            ...result,
-                            subLine,
-                        ];
-                    }, []);
-                const isMultiple = layers.length > 1;
-
-                // Calculate 'background-image' value
-                const valueURL = layers
-                    .map((layer) => {
-                        const hasURLValue = PATTERN_URL.test(layer);
-                        const valueGradient = layer.match(PATTERN_GRADIENT) ? layer.match(PATTERN_GRADIENT)[0] : null;
-
-                        if (hasURLValue) {
-                            return layer
-                                .replace(/(?:[^\s]+[\s]+)*(url\([^)]*\))(?:[\s]+[^\s]+)*/ig, '$1');
-                        }
-
-                        if (valueGradient) {
-                            return layer
-                                .replace(/([^\s]+(?:[\s]+[^\s]+)*)/ig, valueGradient);
-                        }
-
-                        return layer
-                            .replace(/[^\s]+(?:[\s]+[^\s]+)*/ig, 'initial');
-                    })
-                    .join(',');
-
-                decl.cloneAfter({
-                    prop: 'background-image',
-                    value: valueURL.trim(),
-                });
-
-                // Calculate 'background' value
-                const valueRest = layers
-                    .map((layer) => {
-                        const hasURLValue = PATTERN_URL.test(layer);
-
-                        if (!hasURLValue) {
-                            return layer;
-                        }
-
-                        return layer
-                            .replace(
-                                /([^\s]+[\s]+)*(?:url\([^)]*\)(?:[\s]+(?=[^\s]))?)([^\s]+[\s]*[^\s]+)*/ig,
-                                (match, group1, group2) => {
-                                    const startPart = group1 || '';
-                                    const endPart = group2 || '';
-                                    const result = (`${startPart}${endPart}`);
-
-                                    if (isMultiple && !result.trim()) {
-                                        return `${startPart}initial${endPart}`;
-                                    }
-
-                                    return result;
-                                }
-                            );
-                    })
-                    .join(',');
-
-                if (
-                    !valueStartBgColor.trim() &&
-                    !valueEndBgColor.trim() &&
-                    !valueRest.replace(/(?:initial)|[\s,]+/ig, '')
-                ) {
-                    decl.remove();
-                } else {
-                    decl.replaceWith(decl.clone({
-                        value: `${valueStartBgColor}${valueRest}${valueEndBgColor}`.trim(),
-                    }));
-                }
+            return '';
+          })
+          .split(/,/)
+          .reduce((result, subLine, index) => {
+            if (index === 0) {
+              return [subLine];
             }
-        }
-    });
-}
 
-module.exports = destructShorthand;
+            const indexLast = result.length - 1;
+            const subLineLast = result[indexLast];
+
+            if ((subLineLast.match(/\(/g) || []).length !== (subLineLast.match(/\)/g) || []).length) {
+              const lastItem = `${result[indexLast]},${subLine}`;
+
+              return [
+                ...result.slice(0, -1),
+                lastItem,
+              ];
+            }
+
+            return [
+              ...result,
+              subLine,
+            ];
+          }, []);
+        const isMultiple = layers.length > 1;
+
+        // Calculate 'background-image' value
+        const valueURL = layers
+          .map((layer) => {
+            const hasURLValue = PATTERN_URL.test(layer);
+            const valueGradient = layer.match(PATTERN_GRADIENT) ? layer.match(PATTERN_GRADIENT)[0] : null;
+
+            if (hasURLValue) {
+              return layer.replace(/(?:[^\s]+[\s]+)*(url\([^)]*\))(?:[\s]+[^\s]+)*/ig, '$1');
+            }
+
+            if (valueGradient) {
+              return layer.replace(/([^\s]+(?:[\s]+[^\s]+)*)/ig, valueGradient);
+            }
+
+            return layer.replace(/[^\s]+(?:[\s]+[^\s]+)*/ig, 'initial');
+          })
+          .join(',');
+
+        decl.cloneAfter({
+          prop: 'background-image',
+          value: valueURL.trim(),
+        });
+
+        // Calculate 'background' value
+        const valueRest = layers
+          .map((layer) => {
+            const hasURLValue = PATTERN_URL.test(layer);
+
+            if (!hasURLValue) {
+              return layer;
+            }
+
+            return layer
+              .replace(
+                /([^\s]+[\s]+)*(?:url\([^)]*\)(?:[\s]+(?=[^\s]))?)([^\s]+[\s]*[^\s]+)*/ig,
+                (match, group1, group2) => {
+                  const startPart = group1 || '';
+                  const endPart = group2 || '';
+                  const result = (`${startPart}${endPart}`);
+
+                  if (isMultiple && !result.trim()) {
+                    return `${startPart}initial${endPart}`;
+                  }
+
+                  return result;
+                }
+              );
+          })
+          .join(',');
+
+        if (
+          !valueStartBgColor.trim()
+          && !valueEndBgColor.trim()
+          && !valueRest.replace(/(?:initial)|[\s,]+/ig, '')
+        ) {
+          decl.remove();
+        } else {
+          decl.replaceWith(decl.clone({
+            value: `${valueStartBgColor}${valueRest}${valueEndBgColor}`.trim(),
+          }));
+        }
+      }
+    }
+  });
+}

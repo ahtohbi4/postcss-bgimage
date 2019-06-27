@@ -1,3 +1,13 @@
+# [v2.1.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v2.0.0...v2.1.0)
+
+> Jun 27 2019
+
+#### Features
+
+* Updated till `postcss` version 7.
+* Updated till `babel` version 7.
+* Updated till `mocha` version 6.
+
 # [v2.0.0](https://github.com/ahtohbi4/postcss-bgimage/compare/v2.0.0-beta.0...v2.0.0)
 
 #### Bug Fixes
