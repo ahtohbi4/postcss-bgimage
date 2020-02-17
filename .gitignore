@@ -1,5 +1,11 @@
-.project/
+.DS_Store
 
-node_modules/
+.idea
+.project
+.vscode
+
+node_modules
 
 npm-debug.log
+
+dist

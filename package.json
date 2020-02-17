@@ -3,15 +3,18 @@
   "name": "postcss-bgimage",
   "version": "2.1.0",
   "description": "Plugin for PoscCSS to remove or keep only images by url() to optimize page loading",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "engines": {
     "node": ">=4.0.0"
   },
   "scripts": {
+    "build": "NODE_ENV=production rollup -c",
     "lint:js": "npx eslint ./src",
     "test": "mocha --require @babel/register test/*.js test/**/*.js",
     "ci": "npm run test && npm run lint:js",
     "test:watch": "npm run test -- --watch",
+    "prebuild": "rm -rf dist",
+    "prepublishOnly": "npm run build && git push && git push --tags",
     "preversion": "npm run lint:js && npm test"
   },
   "husky": {
@@ -54,7 +57,10 @@
     "expect": "^24.8.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.0.2",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0"
   },
   "babel": {
     "presets": [
