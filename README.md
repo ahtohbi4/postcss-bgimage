@@ -38,27 +38,26 @@ Usage
 Any way of using [PostCSS](https://github.com/postcss/postcss#usage). For example, [Gulp PostCSS](https://github.com/w0rm/gulp-postcss):
 
 ```javascript
-var gulp = require('gulp');
-var postcss = require('gulp-postcss');
-var bgImage = require('postcss-bgimage');
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
+const bgImage = require('postcss-bgimage');
 
-gulp.task('compile', function () {
-    gulp.src('css/style.css')
-        .pipe(postcss([
-            bgImage({
-                mode: 'cutter',
-            })
-        ]))
-        .pipe(gulp.dest('compiled/css/style.top.css'));
+function noBackgrounds() {
+  return gulp.src('css/style.css')
+    .pipe(postcss([bgImage({ mode: 'cutter' })]))
+    .pipe(rename({ suffix: '.top' }))
+    .pipe(gulp.dest('compiled/css'));
+}
 
-    gulp.src('css/style.css')
-        .pipe(postcss([
-            bgImage({
-                mode: 'cutterInvertor',
-            })
-        ]))
-        .pipe(gulp.dest('compiled/css/style.bottom.css'));
-});
+function onlyBackgrounds() {
+  return gulp.src('css/style.css')
+    .pipe(postcss([bgImage({ mode: 'cutterInvertor' })]))
+    .pipe(rename({ suffix: '.bottom' }))
+    .pipe(gulp.dest('compiled/css'));
+}
+
+exports.compile = gulp.parallel(noBackgrounds, onlyBackgrounds);
 ```
 
 Result
