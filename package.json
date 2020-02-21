@@ -3,15 +3,18 @@
   "name": "postcss-bgimage",
   "version": "2.1.0",
   "description": "Plugin for PoscCSS to remove or keep only images by url() to optimize page loading",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "engines": {
     "node": ">=4.0.0"
   },
   "scripts": {
+    "build": "NODE_ENV=production rollup -c",
     "lint:js": "npx eslint ./src",
     "test": "mocha --require @babel/register test/*.js test/**/*.js",
     "ci": "npm run test && npm run lint:js",
     "test:watch": "npm run test -- --watch",
+    "prebuild": "rm -rf dist",
+    "prepublishOnly": "npm run build && git push && git push --tags",
     "preversion": "npm run lint:js && npm test"
   },
   "husky": {
@@ -41,20 +44,23 @@
   "homepage": "https://github.com/ahtohbi4/postcss-bgimage#readme",
   "dependencies": {
     "css-color-list": "0.0.2",
-    "postcss": "^7.0.17"
+    "postcss": "^7.0.26"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
-    "babel-eslint": "^10.0.2",
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "expect": "^24.8.0",
-    "husky": "^3.0.0",
-    "lint-staged": "^9.0.2",
-    "mocha": "^6.1.4"
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "expect": "^25.1.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "mocha": "^7.0.1",
+    "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0"
   },
   "babel": {
     "presets": [
