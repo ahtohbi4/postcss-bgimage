@@ -4,6 +4,11 @@
   "version": "2.1.2",
   "description": "Plugin for PoscCSS to remove or keep only images by url() to optimize page loading",
   "main": "./dist/index.js",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "engines": {
     "node": ">=4.0.0"
   },
